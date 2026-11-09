@@ -160,3 +160,42 @@ body {
   gap: 16px;
   margin-top: 24px;
 }
+.login-page {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.login-form input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.login-form button {
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.form-error {
+  margin: 0;
+  color: #dc2626;
+  font-size: 14px;
+}
