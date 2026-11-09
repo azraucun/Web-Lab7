@@ -1,16 +1,17 @@
 import { Link, useNavigate, useParams } from 'react-router';
 import { fetchProduct } from '../api/productsApi.js';
 import { useFetch } from '../hooks/useFetch.js';
+import { useCartStore } from '../store/cartStore.js';
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const addItem = useCartStore((state) => state.addItem);
   const { loading, error, data: product } = useFetch(
     (signal) => fetchProduct(id, signal),
     [id]
   );
 
-  // id from the URL is always a string: convert before doing math
   const productId = Number(id);
 
   let content;
@@ -41,6 +42,10 @@ function ProductDetail() {
           <p className="product-category">{product.category}</p>
           <p className="product-detail-price">${product.price.toFixed(2)}</p>
           <p>{product.description}</p>
+
+          <button className="add-to-cart" onClick={() => addItem(product)}>
+            Add to cart
+          </button>
 
           <div className="product-nav">
             {productId > 1 && (
