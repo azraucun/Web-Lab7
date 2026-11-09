@@ -1,5 +1,6 @@
 import { fetchProducts } from '../api/productsApi.js';
 import { useFetch } from '../hooks/useFetch.js';
+import ProductCard from '../components/ProductCard.jsx';
 
 function ProductList() {
   const { loading, error, data: products } = useFetch(fetchProducts, []);
@@ -10,9 +11,14 @@ function ProductList() {
   return (
     <>
       <h1>Products</h1>
-      <p>{products.length} products loaded.</p>
+
+      <div className="product-grid">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </>
   );
 }
 
-export default ProductList;
+export default ProductList;s
