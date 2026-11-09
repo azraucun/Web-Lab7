@@ -199,3 +199,13 @@ body {
   color: #dc2626;
   font-size: 14px;
 }
+
+.nav-user {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.nav-button {
+  padding: 4px 10px;
+  cursor: pointer;
+}
