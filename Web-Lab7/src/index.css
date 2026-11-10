@@ -269,3 +269,16 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+
+.cart-badge {
+  display: inline-block;
+  min-width: 20px;
+  padding: 0 6px;
+  margin-left: 4px;
+  border-radius: 10px;
+  background-color: #dc2626;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}

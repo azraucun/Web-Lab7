@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router';
 import { useAuth } from '../context/AuthContext.jsx';
+import { useCartStore, selectItemCount } from '../store/cartStore.js';
 
 function getLinkClass({ isActive }) {
   return isActive ? 'nav-link active' : 'nav-link';
@@ -7,6 +8,7 @@ function getLinkClass({ isActive }) {
 
 function NavBar() {
   const { user, logout } = useAuth();
+  const itemCount = useCartStore(selectItemCount);
 
   return (
     <nav className="navbar">
@@ -18,7 +20,7 @@ function NavBar() {
           Products
         </NavLink>
         <NavLink to="/cart" className={getLinkClass}>
-          Cart
+          Cart <span className="cart-badge">{itemCount}</span>
         </NavLink>
       </div>
 
