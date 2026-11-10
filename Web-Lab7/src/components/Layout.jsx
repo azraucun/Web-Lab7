@@ -1,10 +1,20 @@
 import { Outlet } from 'react-router';
 import NavBar from './NavBar.jsx';
+import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 function Layout() {
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+  // Guard against unexpected stored values such as "blue"
+  const activeTheme = theme === 'dark' ? 'dark' : 'light';
+
+  function toggleTheme() {
+    setTheme(activeTheme === 'dark' ? 'light' : 'dark');
+  }
+
   return (
-    <div className="app">
-      <NavBar />
+    <div className={`app ${activeTheme}`}>
+      <NavBar theme={activeTheme} onToggleTheme={toggleTheme} />
 
       <main className="content">
         <Outlet />

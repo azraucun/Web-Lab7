@@ -6,7 +6,7 @@ function getLinkClass({ isActive }) {
   return isActive ? 'nav-link active' : 'nav-link';
 }
 
-function NavBar() {
+function NavBar({ theme, onToggleTheme }) {
   const { user, logout } = useAuth();
   const itemCount = useCartStore(selectItemCount);
 
@@ -25,6 +25,10 @@ function NavBar() {
       </div>
 
       <div className="nav-actions">
+        <button className="nav-button" onClick={onToggleTheme}>
+          {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+        </button>
+
         {user ? (
           <>
             <span className="nav-user">{user.username}</span>
